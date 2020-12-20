@@ -7,8 +7,10 @@ pub fn create_routes() {
     rocket::ignite()
         .manage(connection::init_pool())
         .attach(cors::CORS())
-        .mount("/users",
+        .mount("/",
                routes![
-               users::handler::login],
+               users::handler::login,
+               users::handler::register
+               ],
         ).launch();
 }

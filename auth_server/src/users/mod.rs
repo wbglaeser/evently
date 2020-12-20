@@ -15,7 +15,15 @@ pub struct User {
 
 #[derive(Insertable, Queryable, AsChangeset, Serialize, Deserialize)]
 #[table_name = "users"]
-pub struct InsertableUser {
+pub struct LoginUser {
     pub email: String,
-    password: String
+    pub password: String
+}
+
+#[derive(Insertable, Queryable, AsChangeset, Serialize, Deserialize)]
+#[table_name = "users"]
+pub struct RegisterUser {
+    pub name: String,
+    pub email: String,
+    pub password: String
 }
