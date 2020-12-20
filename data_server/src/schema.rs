@@ -1,8 +1,8 @@
 table! {
     events (id) {
         id -> Int4,
-        user_id -> Text,
         name -> Text,
+        user_id -> Text,
         date -> Text,
         location -> Text,
     }

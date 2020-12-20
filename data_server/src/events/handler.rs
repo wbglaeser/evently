@@ -30,7 +30,7 @@ pub fn post(event: Json<EventRequest>, connection: DbConn, mut cookies: Cookies)
     }
 }
 
-#[get("/")]
+#[get("/all")]
 pub fn get(connection: DbConn, mut cookies: Cookies) -> Result<Json<Vec<Event>>, Status> {
     let _token = cookies.get("jwt").expect("No cookie set");
     let validation = Validation {leeway: 60, validate_exp:false, algorithms: vec![Algorithm::HS512], ..Default::default()};
@@ -43,9 +43,7 @@ pub fn get(connection: DbConn, mut cookies: Cookies) -> Result<Json<Vec<Event>>,
                     error_status(error)
                 })
             },
-        Err(e) => {
-            Err(Status::InternalServerError)
-        }
+        _ => Err(Status::NotFound)
     }
 }
 

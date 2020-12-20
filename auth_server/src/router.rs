@@ -10,7 +10,9 @@ pub fn create_routes() {
         .mount("/",
                routes![
                users::handler::login,
-               users::handler::register
+               users::handler::logout,
+               users::handler::register,
+               users::handler::validate
                ],
         ).launch();
 }
